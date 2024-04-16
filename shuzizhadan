@@ -1,1 +1,30 @@
+function playNumberBombGame(start, end) {
+    // 设置数字范围和炸弹数字
+    var bomb = Math.floor(Math.random() * (end - start + 1)) + start;
+    console.log("游戏开始！猜猜看哪一个数字是炸弹，数字范围是 " + start + " 到 " + end + "。尝试找出炸弹位置，但要小心哦！");
+
+    while (true) {
+        // 玩家输入一个数字
+        var guess = parseInt(prompt("请输入你猜的数字："));
+        
+        // 检查数字是否在指定范围内
+        if (guess < start || guess > end || isNaN(guess)) {
+            console.log("错误：数字不在范围内，请重新输入。");
+            continue;
+        }
+        
+        // 判断是否猜中炸弹
+        if (guess === bomb) {
+            console.log("炸弹爆炸！你输了！");
+            break;
+        } else if (guess < bomb) {
+            console.log("你猜的数字小于炸弹数字，继续尝试！");
+        } else {
+            console.log("你猜的数字大于炸弹数字，继续尝试！");
+        }
+    }
+}
+
+// 调用游戏函数开始游戏
+playNumberBombGame(1, 100);
 
